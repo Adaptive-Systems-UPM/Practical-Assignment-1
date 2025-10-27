@@ -37,7 +37,7 @@ id2token = dict(dictionary.items())
 # create the vector for each doc
 model_bow = [dictionary.doc2bow(text) for text in texts]
 
-# Create LDA model with specified parameters
+# create LDA model with specified parameters
 lda = models.LdaModel(model_bow, num_topics=30, id2word=dictionary, passes=2, random_state=100)
 lda_vectors = []
 for v in model_bow:
@@ -78,7 +78,7 @@ print(f"Total articles in 'Food and Drink': {num_articles_food_and_drink}")
 
 total_goods = 0
 
-# for every article in "Food and Drink" topic
+# for every article in "Food & Drink" topic
 for idx in food_drink_indices:
     # get LDA vector for current article
     vec_lda = lda_vectors[idx]
@@ -92,7 +92,7 @@ for idx in food_drink_indices:
     # get top-10 most similar articles (excluding the article itself)
     top_10 = [doc_idx for doc_idx, score in similarities_sorted_descending[1:11]]
 
-    # count how many of top-10 are also "Food and Drink"
+    # count how many of top-10 are also "Food & Drink"
     goods = sum(1 for doc_idx in top_10 if df.iloc[doc_idx]['article_section'] == 'Food & Drink')
 
     total_goods += goods

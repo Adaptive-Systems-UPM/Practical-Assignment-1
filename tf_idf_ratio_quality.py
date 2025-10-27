@@ -62,7 +62,7 @@ print(matrix_tfidf)
 
 # implementation of pseudocode
 
-# filter articles by topic "Food and Drink"
+# filter articles by topic "Food & Drink"
 food_drink_indices = df[df['article_section'] == 'Food & Drink'].index.tolist()
 num_articles_food_and_drink = len(food_drink_indices)
 
@@ -70,7 +70,7 @@ print(f"Total articles in 'Food & Drink': {num_articles_food_and_drink}")
 
 total_goods = 0
 
-# for every article in "Food and Drink" topic
+# for every article in "Food & Drink" topic
 for idx in food_drink_indices:
     # get TF-IDF vector for current article
     vec_tfidf = tfidf_vectors[idx]
@@ -78,7 +78,7 @@ for idx in food_drink_indices:
     # calculate similarities with all documents
     similarities = matrix_tfidf[vec_tfidf]
 
-    # sort similarities in descending order and get top-10
+    # sort similarities in descending order
     similarities_sorted_descending = sorted(enumerate(similarities), key=lambda item: -item[1])
 
     # get top-10 most similar articles (excluding the article itself)

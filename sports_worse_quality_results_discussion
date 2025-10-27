@@ -1,0 +1,47 @@
+Category      |  Method  |  Articles  |  Ratio Quality  |  Total Goods  |  Model Time  |  Comparison Time
+--------------+----------+------------+-----------------+---------------+--------------+-----------------
+Food & Drink  |  TF-IDF  |  122       |  59.92%         |  731/1220     |  29.13s      |  5.02s
+Food & Drink  |  LDA     |  122       |  38.77%         |  473/1220     |  39.68s      |  0.27s
+Sports        |  TF-IDF  |  110       |  38.73%         |  426/1100     |  28.75s      |  4.42s
+Sports        |  LDA     |  110       |  5.91%          |  65/1100      |  14.15s      |  0.30s
+
+1. Performance Drop Analysis
+TF-IDF Performance Drop: Sports achieved 38.73% compared to Food & Drink's 59.92% — a 35.4%
+relative decrease in quality. This represents 305 fewer correct matches (731 vs 426 goods),
+confirming that Sports articles are substantially harder to cluster by lexical similarity.
+
+LDA Catastrophic Failure: Sports LDA achieved only 5.91% compared to Food & Drink's 38.77% —
+an 84.7% relative decrease. This is a dramatic collapse,
+indicating that the 30-topic LDA model completely fails to capture Sports category coherence.
+Only 65 out of 1,100 possible matches were correct, suggesting LDA topics are fragmenting
+Sports content across multiple unrelated.
+
+2. Why Sports Results Are Much Worse
+Based on your results and the theory materials, here are the validated explanations.
+
+Vocabulary Diversity (Confirmed): Sports encompasses distinct sub-domains
+(football, basketball, tennis, racing, etc.), each with specialized terminology.
+A football article about "quarterback," "touchdown," and "offense" shares minimal
+vocabulary with a tennis article about "serve," "rally," and "ace."
+TF-IDF struggles because there's no consistent term overlap within the Sports category.
+
+Topic Fragmentation in LDA: The devastating LDA performance (5.91%) reveals that with only 30
+topics distributed across 5,285 documents, Sports content is being scattered across multiple topics
+rather than concentrated. Different sports likely occupy different topic clusters,
+destroying category coherence. Food & Drink maintains better topic concentration because culinary
+vocabulary (cooking, ingredients, restaurants) co-occurs more consistently.
+
+Generic Terminology: Sports articles frequently use common action words like "win," "compete,"
+"score," "team," "player," and "champion" that appear across many news categories (business competitions,
+political races, entertainment awards). This creates noise in similarity calculations. Food & Drink uses
+more distinctive vocabulary like "recipe," "ingredient," "cuisine," "chef," and "flavor" that rarely
+appears in other categories.
+
+Category Breadth: Sports is inherently broader than Food & Drink. While Food & Drink centers on eating,
+cooking, and restaurants with overlapping vocabulary domains, Sports spans team sports, individual sports,
+athletic competitions, sports business, and athlete profiles — each with distinct vocabularies.
+
+3. Execution Time Insights
+Interestingly, LDA model creation for Sports (14.15s) was significantly faster than for
+Food & Drink (39.68s), likely due to stopping convergence earlier when topics couldn't stabilize
+properly. This faster training time is actually a warning sign of poor model fit.
