@@ -1,0 +1,66 @@
+Method  |  Ratio Quality  |  Model Creation Time  |  Comparison Time  |  Total Goods
+--------+-----------------+-----------------------+-------------------+-------------
+TF-IDF  |  0.5992         |  29.13 seconds        |  5.02 seconds     |  731/1220   
+LDA     |  0.3877         |  39.68 seconds        |  0.27 seconds     |  473/1220
+
+1. Ratio Quality Comparison
+TF-IDF achieved significantly better results (59.92%) compared to LDA (38.77%),
+meaning TF-IDF correctly identified Food & Drink articles in the top-10 similar documents about
+21% more often than LDA.
+
+Why TF-IDF Outperformed LDA:
+
+Vocabulary Specificity: Food & Drink articles likely contain highly specific terminology
+(ingredients, cooking methods, recipes, restaurants)
+that appears consistently within this category.
+TF-IDF excels at capturing this lexical similarity because it directly matches terms.
+
+Topic Granularity: With 30 topics, Food & Drink content may be spread across several topics
+rather than concentrated in dedicated ones.
+This dilutes the discriminative power for this specific category.
+
+Direct Word Matching: TF-IDF operates at the word level, so articles about "pasta," "wine," or
+"restaurant" are directly matched. LDA groups these into broader topics that may also include
+tangentially related content.
+
+Dimensionality: TF-IDF uses 161,607 features (unique terms), capturing fine-grained distinctions.
+LDA reduces this to only 30 dimensions, losing specific vocabulary signals.
+
+2. Execution Time Analysis
+Model Creation:
+TF-IDF: 29.13 seconds
+LDA: 39.68 seconds (36% slower)
+LDA takes longer because it requires iterative Gibbs sampling to discover latent topics,
+while TF-IDF only computes term frequencies and inverse document frequencies.
+
+Comparison Time:
+TF-IDF: 5.02 seconds
+LDA: 0.27 seconds (18.6× faster)
+This dramatic difference demonstrates a key advantage of LDA: once the model is built,
+similarity computations are much faster because they operate in a compressed 30-dimensional
+space versus TF-IDF's 161,607-dimensional space.
+
+3. Trade-offs Between Methods
+TF-IDF Advantages:
+- Higher accuracy for categories with distinctive vocabulary
+- Transparent and interpretable (easy to see which terms drive similarity)
+- No hyperparameter tuning required
+- Better for well-defined, terminology-rich topics
+
+TF-IDF Disadvantages:
+- Slower similarity computations (larger vectors)
+- Suffers from synonymy (different words, same meaning)
+- Cannot capture semantic relationships
+- "Helmet" and "bicycle" would be considered dissimilar despite being related
+
+LDA Advantages:
+- Much faster similarity comparisons (compressed representation)
+- Can discover semantic relationships through co-occurrence
+- Dimensionality reduction aids computational efficiency
+- Can reveal latent thematic structure
+
+LDA Disadvantages:
+- Lower accuracy for specific category identification
+- Requires hyperparameter tuning (number of topics, passes, alpha, beta)
+- Topics may not align perfectly with predefined categories
+- Less interpretable results
