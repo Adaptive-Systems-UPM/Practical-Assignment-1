@@ -1,0 +1,24 @@
+Results of methods:
+
+Ratio quality (Jaccard Tag Similarity): 0.6188524590163934
+Ratio quality (Weighted Tag Similarity): 0.5991803278688524
+
+1. Advantages of Tag-Based Similarity:
+- Tags represent human-curated or algorithmically extracted key concepts
+- They reduce dimensionality compared to full-text analysis
+- Tags can capture semantic relationships better than raw text for some applications
+- Computational efficiency: comparing tag sets is faster than computing TF-IDF or LDA similarities
+
+
+2. Benefits of Tag-Based Approach:
+- Efficiency: Tag comparison is much faster than full-text vectorization.
+- Semantic Clarity: Tags capture key concepts explicitly labeled by humans or extraction algorithms.
+- Noise Reduction: Tags filter out common words and focus on meaningful concepts.
+- Hybrid Approach: Can combine tag similarity with content-based methods for better results.
+
+Conclusion:
+Better to use a weighted tag similarity approach where rarer tags contribute more to the
+similarity score, similar to IDF weighting in TF-IDF. This gives higher importance to distinctive
+tags that better characterize specific topics.
+
+
