@@ -12,10 +12,8 @@ from nltk import PorterStemmer
 
 import pandas as pd
 
-# ============= TF-IDF for Sports =============
-print("=" * 50)
+# TF-IDF for Sports
 print("TF-IDF Analysis for Sports")
-print("=" * 50)
 
 # initialize timer for measuring execution time
 init_t: datetime = datetime.datetime.now()
@@ -63,7 +61,7 @@ print("Matrix similarities")
 print(matrix_tfidf)
 
 
-# implementation of pseudocode
+# implementation of pseudocode for TF-IDF
 
 # filter articles by topic "Sports"
 sports_indices = df[df['article_section'] == 'Sports'].index.tolist()
@@ -105,10 +103,8 @@ elapsed_time_pseudocode = end_t - end_creation_model_t
 print(f'Model creation time TF-IDF: {elapsed_time_model_creation}')
 print(f'Pseudocode execution time TF-IDF: {elapsed_time_pseudocode}')
 
-# ============= LDA for Sports =============
-print("\n" + "=" * 50)
+# LDA for Sports
 print("LDA Analysis for Sports")
-print("=" * 50)
 
 # initialize timer for measuring execution time
 init_t: datetime = datetime.datetime.now()

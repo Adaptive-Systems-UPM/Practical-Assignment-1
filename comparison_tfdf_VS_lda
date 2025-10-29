@@ -35,7 +35,7 @@ while TF-IDF only computes term frequencies and inverse document frequencies.
 
 Comparison Time:
 TF-IDF: 5.02 seconds
-LDA: 0.27 seconds (18.6× faster)
+LDA: 0.27 seconds (18.6x faster)
 This dramatic difference demonstrates a key advantage of LDA: once the model is built,
 similarity computations are much faster because they operate in a compressed 30-dimensional
 space versus TF-IDF's 161,607-dimensional space.

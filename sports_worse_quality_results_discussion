@@ -17,8 +17,6 @@ Only 65 out of 1,100 possible matches were correct, suggesting LDA topics are fr
 Sports content across multiple unrelated.
 
 2. Why Sports Results Are Much Worse
-Based on your results and the theory materials, here are the validated explanations.
-
 Vocabulary Diversity (Confirmed): Sports encompasses distinct sub-domains
 (football, basketball, tennis, racing, etc.), each with specialized terminology.
 A football article about "quarterback," "touchdown," and "offense" shares minimal
@@ -37,7 +35,7 @@ political races, entertainment awards). This creates noise in similarity calcula
 more distinctive vocabulary like "recipe," "ingredient," "cuisine," "chef," and "flavor" that rarely
 appears in other categories.
 
-Category Breadth: Sports is inherently broader than Food & Drink. While Food & Drink centers on eating,
+Category Breadth: Sports is broader than Food & Drink. While Food & Drink centers on eating,
 cooking, and restaurants with overlapping vocabulary domains, Sports spans team sports, individual sports,
 athletic competitions, sports business, and athlete profiles — each with distinct vocabularies.
 

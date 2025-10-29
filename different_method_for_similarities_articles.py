@@ -86,11 +86,9 @@ for tag, count in tag_counter.items():
 # get all unique tags for cosine similarity
 all_unique_tags = list(tag_counter.keys())
 
-# ============= Apply to Pseudocode with Tags =============
+# apply to pseudocode with tags
 
-print("=" * 50)
 print("Tag-Based Similarity for Food & Drink")
-print("=" * 50)
 
 food_drink_indices = df[df['article_section'] == 'Food & Drink'].index.tolist()
 num_articles_food_and_drink = len(food_drink_indices)

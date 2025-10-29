@@ -69,7 +69,6 @@ end_creation_model_t: datetime = datetime.datetime.now()
 print()
 
 # implementation of pseudocode for LDA
-print("\n--- Starting Pseudocode Implementation with LDA ---")
 
 food_drink_indices = df[df['article_section'] == 'Food & Drink'].index.tolist()
 num_articles_food_and_drink = len(food_drink_indices)
