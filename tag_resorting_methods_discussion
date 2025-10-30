@@ -1,13 +1,18 @@
-Results of methods:
+We tested two tag-based approaches:
+•	Jaccard Tag Similarity: 61.88%
+•	Weighted Tag Similarity: 59.91%
+Both performed well, with simple Jaccard actually achieving the best result of all
+methods we tested (slightly better than TF-IDF's 59.92%).
 
-Ratio quality (Jaccard Tag Similarity): 0.6188524590163934
-Ratio quality (Weighted Tag Similarity): 0.5991803278688524
 
 1. Advantages of Tag-Based Similarity:
-- Tags represent human-curated or algorithmically extracted key concepts
-- They reduce dimensionality compared to full-text analysis
-- Tags can capture semantic relationships better than raw text for some applications
-- Computational efficiency: comparing tag sets is faster than computing TF-IDF or LDA similarities
+Tags offer several advantages over content-based approaches. They represent
+human-curated or algorithmically extracted key concepts, reducing dimensionality compared to analyzing full text.
+Tags explicitly capture what an article is about rather than relying on word frequency statistics. They also filter
+out common words and focus on meaningful concepts, which reduces noise.
+Computationally, comparing tag sets is much faster than computing TF-IDF
+similarities across 161,607 features or running LDA models. Tags can also be
+combined with content-based methods in a hybrid approach for potentially even better results.
 
 
 2. Benefits of Tag-Based Approach:
@@ -16,9 +21,20 @@ Ratio quality (Weighted Tag Similarity): 0.5991803278688524
 - Noise Reduction: Tags filter out common words and focus on meaningful concepts.
 - Hybrid Approach: Can combine tag similarity with content-based methods for better results.
 
-Conclusion:
-Better to use a weighted tag similarity approach where rarer tags contribute more to the
-similarity score, similar to IDF weighting in TF-IDF. This gives higher importance to distinctive
-tags that better characterize specific topics.
+3. Jaccard vs Weighted Approach
+Interestingly, simple Jaccard similarity (61.88%) slightly outperformed our
+weighted approach (59.91%). We implemented the weighted method to give 	rarer tags more importance, similar to
+IDF weighting in TF-IDF. However, this 	suggests that for Food & Drink, common tags like "Taste," "bruger," or
+"baking" are actually valuable discriminators rather than noise. The weighting 	may have over-emphasized niche
+tags that appear in only a few articles, reducing the ability to find similar mainstream content.
+
+4. Conclusion:
+Tag-based similarity proved to be the best-performing method overall for Food & Drink categorization.
+While the improvement over TF-IDF was modest (about 2 percentage points),
+tags offer significant computational advantages and would likely show even greater benefits for categories like
+Sports where content-based methods struggled. For future work, a weighted approach might still be valuable,
+but the weights should be calibrated based on the specific 	category characteristics rather
+than blindly following TF-IDF's IDF weighting scheme.
+
 
 
